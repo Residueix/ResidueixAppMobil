@@ -7,4 +7,20 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="residueix_icon_button_background">#FFFFFF</color>
+    <color name="boto_aceptar">#00CC33</color>
+    <color name="boto_denegar">#CC0000</color>
+    <color name="blau_menu">#3366FF</color>
+    <color name="verd_menu">#33CC00</color>
+    <color name="groc_menu">#FFCC00</color>
+    <color name="Negre">#000000</color>
+    <color name="Gris5">#333333</color>
+    <color name="Gris4">#666666</color>
+    <color name="Gris3">#999999</color>
+    <color name="Gris2">#CCCCCC</color>
+    <color name="Gris1">#EEEEEE</color>
+
+
+
+
 </resources>
