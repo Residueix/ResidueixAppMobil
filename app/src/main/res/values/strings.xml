@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ResidueixAppMobil</string>
-    <string name="imatge_fons">image</string>
+    <string name="boto_registres">Registra\'t</string>
+    <string name="imatge_fons">Imatge_backgrounds</string>
+    <string name="qui_som_button">Qui som</string>
+    <string name="login_button">Login</string>
 </resources>

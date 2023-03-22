@@ -11,7 +11,8 @@ public class PPrincipalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pprincipal);
+        setContentView(R.layout.activity_pprincipal)
+        ;
     }
 
 
@@ -20,5 +21,11 @@ public class PPrincipalActivity extends AppCompatActivity {
         intentPantallaLogin.setAction(Intent.ACTION_SEND);
         startActivity(intentPantallaLogin);
 
+    }
+
+    public void registreButton(View view) {
+        Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
+        intentPantallaRegistre.setAction(Intent.ACTION_SEND);
+        startActivity(intentPantallaRegistre);
     }
 }

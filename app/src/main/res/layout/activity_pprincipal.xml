@@ -7,29 +7,92 @@
     tools:context=".PPrincipalActivity">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="590dp"
-        android:layout_height="1334dp"
+        android:id="@+id/imatge_fons_pprincipal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.25"
         android:background="#FFFFFF"
         android:contentDescription="@string/imatge_fons"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/logo_imatge_marca_blanc" />
+        app:srcCompat="@drawable/logo_fons" />
 
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="113dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="288dp"
-        android:backgroundTint="@color/blau_menu"
-        android:gravity="center"
-        android:onClick="loginButton"
-        android:text="Login"
-        android:textColor="@color/white"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraint_botons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/imatge_fons_pprincipal">
+
+        <Button
+            android:id="@+id/registre_button"
+            android:layout_width="113dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autoSizeTextType="none"
+            android:backgroundTint="@color/verd_menu"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:onClick="registreButton"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/boto_registres"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_button" />
+
+        <Button
+            android:id="@+id/sobre_naltros_button"
+            android:layout_width="113dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="32dp"
+            android:autoSizeTextType="none"
+            android:backgroundTint="@color/groc_menu"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:onClick="loginButton"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/qui_som_button"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registre_button" />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="113dp"
+            android:layout_height="48dp"
+            android:autoSizeTextType="none"
+            android:backgroundTint="@color/blau_menu"
+            android:ellipsize="none"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:onClick="loginButton"
+            android:paddingLeft="4dp"
+            android:paddingTop="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/login_button"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
