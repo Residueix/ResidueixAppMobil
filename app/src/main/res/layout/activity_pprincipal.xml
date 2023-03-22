@@ -20,8 +20,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraint_botons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="237dp"
+        android:layout_height="299dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,9 +29,8 @@
 
         <Button
             android:id="@+id/registre_button"
-            android:layout_width="113dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:autoSizeTextType="none"
             android:backgroundTint="@color/verd_menu"
             android:gravity="center"
@@ -45,20 +44,20 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/qui_som_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/login_button" />
 
         <Button
             android:id="@+id/qui_som_button"
-            android:layout_width="113dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:autoSizeTextType="none"
             android:backgroundTint="@color/groc_menu"
             android:gravity="center"
             android:includeFontPadding="true"
-            android:onClick="loginButton"
+            android:onClick="quiSomButton"
             android:paddingLeft="4dp"
             android:paddingTop="4dp"
             android:paddingRight="4dp"
@@ -67,17 +66,17 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/registre_button" />
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="113dp"
-            android:layout_height="48dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:autoSizeTextType="none"
             android:backgroundTint="@color/blau_menu"
-            android:ellipsize="none"
             android:gravity="center"
             android:includeFontPadding="true"
             android:onClick="loginButton"
@@ -89,6 +88,7 @@
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/registre_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

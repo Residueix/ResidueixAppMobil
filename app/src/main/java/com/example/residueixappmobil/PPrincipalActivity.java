@@ -28,4 +28,10 @@ public class PPrincipalActivity extends AppCompatActivity {
         intentPantallaRegistre.setAction(Intent.ACTION_SEND);
         startActivity(intentPantallaRegistre);
     }
+
+    public void quiSomButton(View view) {
+        Intent intentPantallaQuiSom = new Intent(this, QuiSomActivity.class);
+        intentPantallaQuiSom.setAction(Intent.ACTION_SEND);
+        startActivity(intentPantallaQuiSom);
+    }
 }
