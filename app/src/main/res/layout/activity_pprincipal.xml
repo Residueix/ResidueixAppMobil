@@ -10,88 +10,111 @@
         android:id="@+id/imatge_fons_pprincipal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:alpha="0.25"
+        android:alpha="0.10"
         android:background="#FFFFFF"
         android:contentDescription="@string/imatge_fons"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/logo_fons" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint_botons"
-        android:layout_width="237dp"
-        android:layout_height="299dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/constraintLayoutImatge"
+        android:layout_width="407dp"
+        android:layout_height="912dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imatge_fons_pprincipal">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/registre_button"
+        <ImageView
+            android:id="@+id/capsalera_logo"
+            android:layout_width="408dp"
+            android:layout_height="102dp"
+            android:contentDescription="@string/logo_pantalla_login"
+            app:layout_constraintBottom_toTopOf="@+id/constraint_botons"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_inline" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_botons"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="none"
-            android:backgroundTint="@color/verd_menu"
-            android:gravity="center"
-            android:includeFontPadding="true"
-            android:onClick="registreButton"
-            android:paddingLeft="4dp"
-            android:paddingTop="4dp"
-            android:paddingRight="4dp"
-            android:paddingBottom="4dp"
-            android:text="@string/boto_registres"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/qui_som_button"
+            android:layout_height="44dp"
+            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/capsalera_logo">
+
+            <Button
+                android:id="@+id/registre_button"
+                android:layout_width="186dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="32dp"
+                android:autoSizeTextType="none"
+                android:backgroundTint="@color/verd_menu"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:onClick="registreButton"
+                android:paddingLeft="4dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="@string/boto_registres"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/login_button"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="186dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="32dp"
+                android:layout_marginEnd="4dp"
+                android:autoSizeTextType="none"
+                android:backgroundTint="@color/blau_menu"
+                android:gravity="center"
+                android:includeFontPadding="true"
+                android:onClick="loginButton"
+                android:paddingLeft="4dp"
+                android:paddingTop="4dp"
+                android:paddingRight="4dp"
+                android:paddingBottom="4dp"
+                android:text="@string/login_button"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toStartOf="@+id/registre_button"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView2"
+            android:layout_width="405dp"
+            android:layout_height="672dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_button" />
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayoutImatge"
+            app:layout_constraintTop_toBottomOf="@+id/constraint_botons">
 
-        <Button
-            android:id="@+id/qui_som_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="none"
-            android:backgroundTint="@color/groc_menu"
-            android:gravity="center"
-            android:includeFontPadding="true"
-            android:onClick="quiSomButton"
-            android:paddingLeft="4dp"
-            android:paddingTop="4dp"
-            android:paddingRight="4dp"
-            android:paddingBottom="4dp"
-            android:text="@string/qui_som_button"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/registre_button" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
 
-        <Button
-            android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autoSizeTextType="none"
-            android:backgroundTint="@color/blau_menu"
-            android:gravity="center"
-            android:includeFontPadding="true"
-            android:onClick="loginButton"
-            android:paddingLeft="4dp"
-            android:paddingTop="4dp"
-            android:paddingRight="4dp"
-            android:paddingBottom="4dp"
-            android:text="@string/login_button"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/registre_button"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -17,7 +17,7 @@ public class PPrincipalActivity extends AppCompatActivity {
 
 
     public void loginButton(View view) {
-        Intent intentPantallaLogin = new Intent(this, PantallaLogin.class);
+        Intent intentPantallaLogin = new Intent(this, LoginActivity.class);
         intentPantallaLogin.setAction(Intent.ACTION_SEND);
         startActivity(intentPantallaLogin);
 

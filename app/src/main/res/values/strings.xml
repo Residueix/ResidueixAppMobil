@@ -5,4 +5,9 @@
     <string name="qui_som_button">Qui som</string>
     <string name="login_button">Login</string>
     <string name="logo_pantalla_login">logo_login</string>
+    <string name="correu_usuari">Correu</string>
+    <string name="contrasenya_usuari">Contrasenya</string>
+    <string name="boto_enrere">Enrere</string>
+    <string name="boto_entrar">Entrar</string>
+    <string name="frase_contrasenya_perduda">Ha ovlidat la seva contrasenya?</string>
 </resources>

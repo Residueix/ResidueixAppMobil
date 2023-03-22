@@ -22,14 +22,21 @@
         </activity>
 
         <activity
-            android:name=".PantallaLogin"
+            android:name=".LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil">
         </activity>
         <activity
             android:name=".RegistreActivity"
             android:exported="false"
-            android:theme="@style/Theme.ResidueixAppMobil"/>
+            android:theme="@style/Theme.ResidueixAppMobil">
+
+        </activity>
+        <activity
+            android:name=".QuiSomActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil">
+        </activity>
 
     </application>
 
