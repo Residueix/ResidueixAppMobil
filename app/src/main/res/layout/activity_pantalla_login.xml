@@ -7,13 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".PantallaLogin">
 
-  <TextView
-      android:id="@+id/textView3"
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/constraintLayout"
+      android:layout_width="match_parent"
+      android:layout_height="238dp"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" >
+
+  <ImageView
+      android:id="@+id/imageView2"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:text="login"
-      android:gravity="center"
-      tools:layout_editor_absoluteX="150dp"
-      tools:layout_editor_absoluteY="199dp" />
+      app:srcCompat="@drawable/logo_final"
+      tools:layout_editor_absoluteX="411dp"
+      android:contentDescription="@string/logo_pantalla_login" />
 
   </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,4 +4,5 @@
     <string name="imatge_fons">Imatge_backgrounds</string>
     <string name="qui_som_button">Qui som</string>
     <string name="login_button">Login</string>
+    <string name="logo_pantalla_login">logo_login</string>
 </resources>
