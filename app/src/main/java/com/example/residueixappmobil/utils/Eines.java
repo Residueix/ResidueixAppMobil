@@ -29,6 +29,5 @@ public class Eines extends AppCompatActivity {
         return mather.find();
     }
 
-    Hola
-
+   
 }
