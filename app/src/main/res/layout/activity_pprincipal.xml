@@ -327,7 +327,7 @@
                         android:paddingTop="4dp"
                         android:paddingRight="4dp"
                         android:paddingBottom="4dp"
-                        android:text="@string/boto_placeHolder"
+                        android:text="@string/boto_placeHolder1"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="24sp"
