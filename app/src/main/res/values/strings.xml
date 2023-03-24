@@ -10,4 +10,8 @@
     <string name="boto_enrere">Enrere</string>
     <string name="boto_entrar">Entrar</string>
     <string name="frase_contrasenya_perduda">Ha ovlidat la seva contrasenya?</string>
+    <string name="boto_Filosofia">Coneix la nostra filosofia</string>
+    <string name="boto_Sobre_Nosaltres">Sobre Nosaltres</string>
+    <string name="boto_Punts_Recollida">Els nostres punts de recollida</string>
+    <string name="boto_placeHolder1">PlaceHolder1</string>
 </resources>
