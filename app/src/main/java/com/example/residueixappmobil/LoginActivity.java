@@ -34,8 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void metodeOlvidatContrasenya(View view) {
-
-
+        // TODO document why this method is empty
     }
 
 

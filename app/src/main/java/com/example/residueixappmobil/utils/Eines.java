@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class Eines extends AppCompatActivity {
 
 
-    public void tornar_enrere(View view) {
+    public void tornar_enrere(View  view) {
         Button botoEnrere = findViewById(R.id.boto_enrere);
         botoEnrere.setOnClickListener(new View.OnClickListener() {
             @Override
