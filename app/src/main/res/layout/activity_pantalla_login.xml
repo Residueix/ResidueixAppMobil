@@ -71,6 +71,7 @@
             android:id="@+id/constraintLayoutBotonsCredencials"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:alpha="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
@@ -97,7 +98,8 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="4dp"
                 android:backgroundTint="@color/boto_denegar"
-                android:onClick="tornar_enrere"
+                android:onClick="tornarEnrera"
+
                 android:text="@string/boto_enrere"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/boto_acceptar_login"

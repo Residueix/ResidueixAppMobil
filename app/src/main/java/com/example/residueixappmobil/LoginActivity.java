@@ -1,4 +1,10 @@
 package com.example.residueixappmobil;
+/**
+ * Classe que conté totes les instruccions de la pantalla de Login.
+ *
+ * @author Albert Montes Miracle
+ * @version 23/03/2023
+ */
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.residueixappmobil.utils.Eines;
 import com.example.residueixappmobil.model.Usuari;
 
@@ -18,75 +30,102 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     Eines eina;
     Usuari user;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pantalla_login);
         this.eina = new Eines();
+        requestQueue = Volley.newRequestQueue(this);
 
     }
 
+    public void tornarEnrera(View view) {
+        finish();
+    }
+
+    /**
+     * En pitjar a la frase "Ha olvidat la seva contrasenya?"ens mostra RecuperarPassActivity
+     */
     public void metodeOlvidatContrasenya(View view) {
         // TODO document why this method is empty
     }
 
-
-    public void validarLogin(View view) {
-        Button buttonAceptar = findViewById(R.id.boto_acceptar_login);
+   /* private void validarLogin(View view) {
         TextView tvUsuari = findViewById(R.id.editTextTextPersonName);
         TextView tvPassword = findViewById(R.id.editTextTextPassword);
-
-
-        if (eina.validarEmail(tvUsuari.getText().toString())) {
-
-            try {
-
-                URL url = new URL("http://169.254.142.250/residueix/api/login/index.php");
-                Map<String, Object> params = new LinkedHashMap<>();
-
-                // Paràmetres
-                params.put("usuari", tvUsuari);
-                params.put("password", tvPassword);
-
-                // Cridem l'api per recuperar el json
-                String jsonO = eina.cridaApi(url, params);
-
-                // Llegim el Json.
-                if (!jsonO.equals("")) {
-                    JSONObject json = new JSONObject(jsonO);
-                    if (json.get("codi_error").toString().equals("0")) {
-                        Usuari user = new Usuari(Integer.parseInt(json.get("id").toString()),
-                                Integer.parseInt(json.get("tipus").toString()),
-                                json.get("email").toString(),
-                                json.get("password").toString(), json.get("nom").toString(),
-                                json.get("cognom1").toString(),
-                                json.get("cognom2").toString(), json.get("telefon").toString(),
-                                json.get("token").toString());
-                        Toast.makeText(this, "Crida a la API correcta"+ user.getNom(), Toast.LENGTH_SHORT).show();
-                    }else{
-                        Toast.makeText(this, "Error"+ json.get("codi_error") + " " + json.get("error"), Toast.LENGTH_SHORT).show();
+        String url = "http://10.2.136.45/residueix/api/login/index.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Manejar la respuesta aquí
+                        System.out.println(response);
                     }
-                } else {
-                    Toast.makeText(this, "Ha sorgit un error a la API.", Toast.LENGTH_SHORT).show();
-                }
-
-            } catch (IOException e) {
-                System.out.println("Error excepció:" + e.getMessage());
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Manejar el error aquí
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("usuari", tvUsuari.getText().toString());
+                params.put("password", tvPassword.getText().toString());
+                return params;
             }
+        };
+        this.requestQueue.add(stringRequest);
+    }*/
 
-        } else {
-            Toast.makeText(this, "Format d'email incorrecte.", Toast.LENGTH_SHORT).show();
-        }
+
+    /**
+     * Metode que fa la petició al servidor per comprovar que l'usuari sigui correcte
+     */
+    public void validarLogin(View view) throws JSONException {
+
+        TextView tvUsuari = findViewById(R.id.editTextTextPersonName);
+        TextView tvPassword = findViewById(R.id.editTextTextPassword);
+        // JSONObject login = Eines.loginUsuari(tvUsuari.getText().toString(), tvPassword.getText().toString());
+
+
+        String url = "http://tu-api.com/endpoint";
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // Manejar la respuesta aquí
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // Manejar el error aquí
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("parametro1", "valor1");
+                params.put("parametro2", "valor2");
+                return params;
+            }
+        };
+        queue.add(stringRequest);
 
 
     }
+
+
 }
