@@ -33,6 +33,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="12dp"
+            android:background="#37969292"
             android:text="@string/text_aboutUs"
             android:textAlignment="textStart"
             android:textColor="#012E2A"
@@ -49,6 +50,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/sobre_nosaltres"
             android:textAlignment="center"
+            android:textColor="#B33366FF"
             android:textSize="48sp"
             app:layout_constraintBottom_toTopOf="@+id/tVaboutUs"
             app:layout_constraintEnd_toEndOf="@id/constraitPrincipal"
@@ -65,7 +67,6 @@
             app:layout_constraintEnd_toEndOf="@id/constraitPrincipal"
             app:layout_constraintStart_toStartOf="@id/constraitPrincipal"
             app:layout_constraintTop_toBottomOf="@id/tVaboutUs">
-
 
 
             <Button

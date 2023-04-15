@@ -1,11 +1,9 @@
 package com.example.residueixappmobil;
 /**
  * Classe que conté totes les instruccions de la pantalla de Login.
- *
  * @author Albert Montes Miracle
  * @version 23/03/2023
  */
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -90,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
     }*/
 
 
+
     /**
      * Metode que fa la petició al servidor per comprovar que l'usuari sigui correcte
      */
@@ -97,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
 
         TextView tvUsuari = findViewById(R.id.editTextTextPersonName);
         TextView tvPassword = findViewById(R.id.editTextTextPassword);
-        // JSONObject login = Eines.loginUsuari(tvUsuari.getText().toString(), tvPassword.getText().toString());
+       // JSONObject login = Eines.loginUsuari(tvUsuari.getText().toString(), tvPassword.getText().toString());
 
 
         String url = "http://tu-api.com/endpoint";
