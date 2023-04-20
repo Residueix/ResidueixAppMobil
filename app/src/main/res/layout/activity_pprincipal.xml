@@ -58,7 +58,7 @@
             android:id="@+id/constraint_botons"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             app:layout_constraintBottom_toTopOf="@+id/scrollViewImatges"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -128,20 +128,19 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClImatgeFilosofia"
+                    android:id="@+id/ClImatgeResidus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imatgeFilosofia"
+                        android:id="@+id/imatgeResidus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:clickable="true"
-                        android:onClick="quiSom"
+                        android:onClick="tipusResidusButton"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -152,16 +151,70 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClBotoFilosofia"
+                    android:id="@+id/ClBotoResidus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent">
 
                     <Button
-                        android:id="@+id/botoFilosofia"
+                        android:id="@+id/botoResidus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
+                        android:alpha="0.8"
+
+                        android:autoSizeTextType="none"
+                        android:backgroundTint="@color/groc_menu"
+                        android:gravity="center"
+                        android:includeFontPadding="true"
+                        android:onClick="tipusResidusButton"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="4dp"
+                        android:paddingRight="4dp"
+                        android:paddingBottom="4dp"
+                        android:text="@string/boto_Residus"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ClImatgePuntsRecollida2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/imatgePuntsRecollida"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:clickable="true"
+                        android:onClick="quiSom"
+                        app:srcCompat="@drawable/imatge_punts_recollida" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ClBotoPuntsRecollida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <Button
+                        android:id="@+id/botoPuntsRecollida"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
                         android:alpha="0.8"
                         android:autoSizeTextType="none"
                         android:backgroundTint="@color/groc_menu"
@@ -172,7 +225,7 @@
                         android:paddingTop="4dp"
                         android:paddingRight="4dp"
                         android:paddingBottom="4dp"
-                        android:text="@string/boto_Filosofia"
+                        android:text="@string/boto_Punts_Recollida"
                         android:textAlignment="center"
                         android:textColor="@color/white"
                         android:textSize="24sp"
@@ -215,6 +268,8 @@
                         android:id="@+id/botoAboutUs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="12dp"
                         android:alpha="0.8"
                         android:autoSizeTextType="none"
                         android:backgroundTint="@color/groc_menu"
@@ -236,107 +291,6 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClImatgePuntsRecollida2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imatgePuntsRecollida"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:clickable="true"
-                        android:onClick="quiSom"
-                        app:srcCompat="@drawable/imatge_punts_recollida" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClBotoPuntsRecollida"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <Button
-                        android:id="@+id/botoPuntsRecollida"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:alpha="0.8"
-                        android:autoSizeTextType="none"
-                        android:backgroundTint="@color/groc_menu"
-                        android:gravity="center"
-                        android:includeFontPadding="true"
-                        android:onClick="quiSomButton"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/boto_Punts_Recollida"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClImatgeEncaraNoHoSe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imatgeEncaraNoHoSe"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:clickable="true"
-                        android:onClick="quiSom"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/imatge_contenidor" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/ClBotoEncaraNoHoSe"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <Button
-                        android:id="@+id/botoEncaraNoHoSe"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:alpha="0.8"
-                        android:autoSizeTextType="none"
-                        android:backgroundTint="@color/groc_menu"
-                        android:gravity="center"
-                        android:includeFontPadding="true"
-                        android:onClick="quiSomButton"
-                        android:paddingLeft="4dp"
-                        android:paddingTop="4dp"
-                        android:paddingRight="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/boto_placeHolder1"
-                        android:textAlignment="center"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </ScrollView>
