@@ -2,7 +2,7 @@ package com.example.residueixappmobil.utils;
 
 import com.google.gson.annotations.SerializedName;
 
-public class TokenResponse {
+public class ResponseLogin {
     @SerializedName("token")
     private String token;
     @SerializedName("tipus_nom")
@@ -29,15 +29,39 @@ public class TokenResponse {
     private String actiu;
     @SerializedName("error")
     private String error;
+    @SerializedName("accio")
+    private String accio;
 
 
 
+    @SerializedName("descripcio")
+    private String descripcio;
+
+    @SerializedName("llistat")
+    private String LlistaResidus ;
+
+    @SerializedName("permis")
+    private String permis;
+
+
+    public String getPermis() {
+        return permis;
+    }
+
+    public String getLlistaResidus() {
+        return LlistaResidus;
+    }
+    public String getAccio() {
+        return accio;
+    }
+
+    public String getDescripcio() {
+        return descripcio;
+    }
 
     public String getError() {
         return error;
     }
-
-
 
     public String getToken() {
         return token;
@@ -57,9 +81,11 @@ public class TokenResponse {
     public String getId() {
         return id;
     }
+
     public String getTipus() {
         return tipus;
     }
+
     public String getCognom1() {
         return cognom1;
     }

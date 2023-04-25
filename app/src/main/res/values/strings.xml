@@ -25,4 +25,9 @@
     <string name="residus">Residus</string>
     <string name="organic">Orgànic</string>
     <string name="inorgànic">Inorgànic</string>
+    <string name="Carrer">Carrer</string>
+    <string name="Codi_Postal">Codi Postal</string>
+    <string name="Poblacio">Població</string>
+    <string name="Nom_Adherit">Nom Adherit</string>
+    <string name="Horari">Horari</string>
 </resources>

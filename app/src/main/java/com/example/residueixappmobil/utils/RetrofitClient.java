@@ -2,6 +2,10 @@ package com.example.residueixappmobil.utils;
 
 import com.example.residueixappmobil.utils.ApiService;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -19,9 +23,7 @@ public class RetrofitClient {
         }
         return retrofit.create(ApiService.class);
     }
-    private static Retrofit retrofitFallo = null;
 
-    private static final String BASE_URL_FALLO = "http://10.2.136.45/residueix/api/";
 
 
 }

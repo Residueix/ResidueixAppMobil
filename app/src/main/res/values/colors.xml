@@ -11,6 +11,7 @@
     <color name="boto_acceptar">#00CC33</color>
     <color name="boto_denegar">#CC0000</color>
     <color name="blau_menu">#3366FF</color>
+    <color name="blau_menu_difuminat">#213366FF</color>
     <color name="verd_menu">#33CC00</color>
     <color name="groc_menu">#FFCC00</color>
     <color name="Negre">#000000</color>

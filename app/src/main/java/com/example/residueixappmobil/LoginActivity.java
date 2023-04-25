@@ -9,6 +9,7 @@ package com.example.residueixappmobil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,8 @@ import android.widget.Toast;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.RetrofitClient;
-import com.example.residueixappmobil.utils.TokenResponse;
+import com.example.residueixappmobil.utils.ResponseLogin;
+import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,7 +31,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText tvUsuari;
     private EditText tvPassword;
-    private Usuari usuari;
+
+    private Usuari mUsuari;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pantalla_login);
         tvUsuari = findViewById(R.id.editTextTextPersonName);
         tvPassword = findViewById(R.id.editTextTextPassword);
-        Intent intent = getIntent();
-        this.usuari = (Usuari) intent.getSerializableExtra("usuari");
-
         Button loginButton = findViewById(R.id.boto_acceptar_login);
-
-
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,77 +51,79 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validarLogin() {
-        String usuari = tvUsuari.getText().toString();
-        String password = tvPassword.getText().toString();
+        String tVusuari = tvUsuari.getText().toString();
+        String tVpassword = tvPassword.getText().toString();
+
+        if (!tVusuari.equals("") && !tVpassword.equals("")) {
+
+            ApiService apiService = RetrofitClient.getApiService();
+            Call<ResponseLogin> call = apiService.login(tVusuari, tVpassword);
+            call.enqueue(new Callback<>() {
+                @Override
+                public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                    if (response.isSuccessful()) {
+                        ResponseLogin responseLogin = response.body();
+                        String error;
+                        if (responseLogin.getCodiError().equals("0")) {
+
+                            mUsuari = new Usuari();
+                            mUsuari.setId(Integer.parseInt(responseLogin.getId()));
+                            mUsuari.setTipus(Integer.parseInt(responseLogin.getTipus()));
+                            mUsuari.setEmail(responseLogin.getEmail());
+                            mUsuari.setPassword(responseLogin.getPassword());
+                            mUsuari.setNom(responseLogin.getNom());
+                            mUsuari.setCognom1(responseLogin.getCognom1());
+                            mUsuari.setCognom2(responseLogin.getCognom2());
+                            mUsuari.setToken(responseLogin.getToken());
+
+                            String tipus = responseLogin.getTipus();
+                            String actiu = responseLogin.getActiu();
+                            error = responseLogin.getError();
+                            String cError = responseLogin.getCodiError();
+                            String id = responseLogin.getId();
+                            //Toast.makeText(LoginActivity.this, "Codi error : " + cError + "Tipus: " + tipus,
+                            //      Toast.LENGTH_SHORT).show();
 
 
+                            SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            String jsonUsuari = new Gson().toJson(mUsuari);
+                            editor.putString("json", jsonUsuari);
+                            editor.commit();
 
-        ApiService apiService = RetrofitClient.getApiService();
-        Call<TokenResponse> call = apiService.login(usuari, password);
-        call.enqueue(new Callback<TokenResponse>() {
+                            if (tipus.equals("2")) {
+                                Intent intent = new Intent(LoginActivity.this, PerfilResiduentActivity.class);
 
-            @Override
-            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-                if (response.isSuccessful()) {
-                    TokenResponse tokenResponse = response.body();
-                    String token = tokenResponse.getToken();
-                    String email = tokenResponse.getEmail();
-                    String tipus = tokenResponse.getTipus();
-                    String nom = tokenResponse.getNom();
-                    String cognom1 = tokenResponse.getCognom1();
-                    String cognom2 = tokenResponse.getCognom2();
-                    String password = tokenResponse.getPassword();
-                    String actiu = tokenResponse.getActiu();
-                    String error = tokenResponse.getError();
-                    String cError = tokenResponse.getCodiError();
-                    String id = tokenResponse.getId();
+                                startActivity(intent);
+
+                            } else if (tipus.equals("4")) {
+                                Toast.makeText(LoginActivity.this, "Es tipus:" + tipus, Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(LoginActivity.this, PerfilAdheritActivity.class);
+                                startActivity(intent);
+                            }
 
 
-
-                    //Toast.makeText(LoginActivity.this, "Codi error : " + cError + "Tipus: " + tipus,
-                       //      Toast.LENGTH_SHORT).show();
-
-
-                    if (cError.equals("0")) {
-
-                            generarUsuari(id, nom, tipus);
-
-                        if (tipus.equals("2")) {
-                            Intent intent = new Intent(LoginActivity.this, QuiSomActivity.class);
-                            intent.putExtra("usuari", usuari);
-                            startActivity(intent);
-
-                        } else if (tipus.equals("1")) {
-                            Toast.makeText(LoginActivity.this, "Es tipus:" + tipus, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, PerfilAdheritActivity.class);
-                            startActivity(intent);
+                        } else {
+                            error = responseLogin.getError();
+                            Toast.makeText(LoginActivity.this, "Error: " + error , Toast.LENGTH_SHORT).show();
                         }
-
-
-                    } else {
-                        Toast.makeText(LoginActivity.this, "Error: " + error, Toast.LENGTH_SHORT).show();
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
+                @Override
+                public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                    Toast.makeText(LoginActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(this, "Introdueix un nom usuari i contrasenya correctes.", Toast.LENGTH_SHORT).show();
+        }
     }
-    public void generarUsuari(String id, String nom, String tipus){
-        Toast.makeText(LoginActivity.this, "Id: "+ id , Toast.LENGTH_SHORT).show();
-        this.usuari.setId(Integer.parseInt(id));
-        this.usuari.setNom(nom);
-        this.usuari.setTipus(Integer.parseInt(tipus));
-    };
+
     public void tornarEnrera(View view) {
-        finish();
-        Intent intentPantallaPrincipal = new Intent(this, PPrincipalActivity.class);
-        intentPantallaPrincipal.putExtra("usuari", usuari);
-        intentPantallaPrincipal.setAction(Intent.ACTION_SEND);
-        startActivity(intentPantallaPrincipal);
+        Intent intent = new Intent(LoginActivity.this, PPrincipalActivity.class);
+        startActivity(intent);
+
     }
 }
 

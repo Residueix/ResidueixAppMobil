@@ -32,11 +32,11 @@
             android:id="@+id/tVResidus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="4dp"
             android:text="Fes-te Residuent!"
             android:textAlignment="center"
             android:textColor="#B33366FF"
-            android:textSize="48sp"
+            android:textSize="34sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +50,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/tVResidus"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cLFormulari"
@@ -71,7 +72,8 @@
                     app:layout_constraintBottom_toTopOf="@id/eTNom"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
 
                     <CheckBox
                         android:id="@+id/cBUsuari"
@@ -94,10 +96,10 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:layout_marginEnd="4dp"
+                        android:checked="false"
                         android:text="Adherit"
                         android:textColor="#B33366FF"
                         android:textSize="18sp"
-                        android:checked="false"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/cBUsuari"
@@ -108,12 +110,12 @@
                     android:id="@+id/eTNom"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
                     android:ems="15"
                     android:hint="@string/nom"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTCognom1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cLCheckbox" />
@@ -122,12 +124,13 @@
                     android:id="@+id/eTCognom1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/cognom_1"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTCognom2"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTNom" />
@@ -136,12 +139,13 @@
                     android:id="@+id/eTCognom2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/cognom_2"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTCorreu"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTCognom1" />
@@ -150,12 +154,13 @@
                     android:id="@+id/eTCorreu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/correu_usuari"
                     android:inputType="textEmailAddress"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTMobil"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTCognom2" />
@@ -164,40 +169,86 @@
                     android:id="@+id/eTMobil"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/mòbil"
                     android:inputType="phone"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTCarrer"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTCorreu" />
 
                 <EditText
-                    android:id="@+id/eTContrasenya"
+                    android:id="@+id/eTCarrer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
-                    android:hint="@string/contrasenya_usuari"
-                    android:inputType="textPassword"
+                    android:hint="@string/Carrer"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTCodiPostal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTMobil" />
 
                 <EditText
+                    android:id="@+id/eTCodiPostal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ems="15"
+                    android:hint="@string/Codi_Postal"
+                    android:inputType="number"
+                    android:minHeight="48dp"
+                    android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTPoblacio"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eTCarrer" />
+
+                <EditText
+                    android:id="@+id/eTPoblacio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ems="15"
+                    android:hint="@string/Poblacio"
+                    android:minHeight="48dp"
+                    android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTContrasenya"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eTCodiPostal" />
+
+                <EditText
+                    android:id="@+id/eTContrasenya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ems="15"
+                    android:hint="@string/contrasenya_usuari"
+                    android:inputType="textPassword"
+                    android:minHeight="48dp"
+                    android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toTopOf="@+id/eTRepetirContrasenya"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eTPoblacio" />
+
+                <EditText
                     android:id="@+id/eTRepetirContrasenya"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/repetiu_contrasenya"
                     android:inputType="textPassword"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTContrasenya" />
@@ -207,20 +258,20 @@
                 android:id="@+id/cLFormulariAdicional"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cLFormulari"
-                app:layout_constraintVertical_bias="0.0"
-                android:visibility="gone">
+                app:layout_constraintVertical_bias="0.0">
 
                 <EditText
-                    android:id="@+id/adicional1"
+                    android:id="@+id/eTnom_Adherit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:ems="15"
-                    android:hint="@string/nom"
+                    android:hint="@string/Nom_Adherit"
                     android:inputType="textPersonName"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
@@ -229,27 +280,29 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/adicional2"
+                    android:id="@+id/etHorari"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:ems="15"
-                    android:hint="@string/cognom_1"
-                    android:inputType="textPersonName"
+                    android:hint="@string/Horari"
+                    android:inputType="number"
                     android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/adicional1" />
+                    app:layout_constraintTop_toBottomOf="@+id/eTnom_Adherit" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutBotonsCredencials"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="4dp"
             android:alpha="0.8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
