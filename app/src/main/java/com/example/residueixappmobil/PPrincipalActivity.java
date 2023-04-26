@@ -102,13 +102,7 @@ public class PPrincipalActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * En pitjar a l'imatge registre ens mostra RegistreActivity
-     */
-    public void registreButton(View view) {
-        Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
-        intentPantallaRegistre.setAction(Intent.ACTION_SEND);
-        startActivity(intentPantallaRegistre);
+    public void logout(View view) {
         ApiService apiService = getApiService();
         Call<ResponseLogin> call = apiService.logout(String.valueOf(mUsuari.getId()), mUsuari.getToken());
         call.enqueue(new Callback<>() {
@@ -139,8 +133,19 @@ public class PPrincipalActivity extends AppCompatActivity {
                 Toast.makeText(PPrincipalActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
+    /**
+     * En pitjar a l'imatge registre ens mostra RegistreActivity
+     */
+    public void registreButton(View view) {
+        Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
+        intentPantallaRegistre.setAction(Intent.ACTION_SEND);
+        startActivity(intentPantallaRegistre);
+
+
+    }
 
     /**
      * En pitjar a l'imatge QuiSom ens mostra QuiSomActivity
@@ -190,7 +195,7 @@ public class PPrincipalActivity extends AppCompatActivity {
         SharedPreferences sharedPreferencesAdmin = getSharedPreferences("Usuari_administrador", MODE_PRIVATE);
         ApiService apiService = RetrofitClient.getApiService();
 
-        Call<ResponseLogin> call = apiService.logout(sharedPreferencesAdmin.getString("id_usuari",null),sharedPreferencesAdmin.getString("token",null));
+        Call<ResponseLogin> call = apiService.logout(sharedPreferencesAdmin.getString("id_usuari", null), sharedPreferencesAdmin.getString("token", null));
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {

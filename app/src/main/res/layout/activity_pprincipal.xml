@@ -67,8 +67,9 @@
 
             <Button
                 android:id="@+id/registre_button"
-                android:layout_width="186dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:autoSizeTextType="none"
                 android:backgroundTint="@color/verd_menu"
@@ -85,11 +86,12 @@
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/button"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/login_button"
-                android:layout_width="186dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"
                 android:autoSizeTextType="none"
@@ -107,6 +109,7 @@
                 android:textSize="16sp"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,6 +134,22 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="4dp"
+                android:text="Logout"
+                android:onClick="logout"
+                android:alpha="0.8"
+                android:backgroundTint="@color/boto_denegar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/registre_button"
+                app:layout_constraintStart_toEndOf="@+id/login_button"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
