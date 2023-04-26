@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App.Starting"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".PerfilAdheritActivity"
-            android:exported="false" />
+
         <activity
             android:name=".PPrincipalActivity"
             android:exported="true"
@@ -50,13 +48,13 @@
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".OrganicActivity"
-            android:exported="false"
-            android:theme="@style/Theme.ResidueixAppMobil" />
-        <activity
             android:name=".TipusResiduActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
+        <activity
+            android:name=".PerfilAdheritActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil"/>
     </application>
 
 </manifest>

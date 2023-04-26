@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-public class RegistreActivity extends AppCompatActivity {
+public class        RegistreActivity extends AppCompatActivity {
     private ConstraintLayout cLFormulari;
     private ConstraintLayout cLFormulariAdicional;
 

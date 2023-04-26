@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.residueixappmobil.model.ListElement;
+import com.example.residueixappmobil.model.Residu;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ListAdapter;
@@ -31,16 +32,17 @@ import retrofit2.Response;
 
 public class TipusResiduActivity extends AppCompatActivity {
 
-    List<ListElement> elements;
+    List<Residu> residus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        residus = new ArrayList<>();
+
+
         setContentView(R.layout.activity_tipus_residu);
         SharedPreferences sharedPreferencesAdmin = getSharedPreferences("Usuari_administrador", MODE_PRIVATE);
         ApiService apiService = RetrofitClient.getApiService();
-        Call<ResponseLogin> call = apiService.llistatResidus(sharedPreferencesAdmin.getString("id_usuari",null),sharedPreferencesAdmin.getString("token",null), sharedPreferencesAdmin.getString("permis",null));
-
+        Call<ResponseLogin> call = apiService.llistatResidus(sharedPreferencesAdmin.getString("id_usuari", null), sharedPreferencesAdmin.getString("token", null), sharedPreferencesAdmin.getString("permis", null));
 
         call.enqueue(new Callback<>() {
 
@@ -49,46 +51,45 @@ public class TipusResiduActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ResponseLogin responseLogin = response.body();
                     System.out.println(responseLogin.getCodiError());
-                    System.out.println(sharedPreferencesAdmin.getString("token",null));
-                    System.out.println(sharedPreferencesAdmin.getString("id",null));
-                    System.out.println(sharedPreferencesAdmin.getString("permis",null));
+                    System.out.println(sharedPreferencesAdmin.getString("token", null));
+                    System.out.println(sharedPreferencesAdmin.getString("id", null));
+                    System.out.println(sharedPreferencesAdmin.getString("permis", null));
+
                     if (responseLogin.getCodiError().equals("0")) {
-                       /* for (String e : responseLogin.getLlistaResidus()) {
-                            System.out.println(e[0]);
-                            System.out.println(e[1]);
-                            System.out.println(e[2]);
-                            System.out.println(e[3]);
-                            System.out.println(e[4]);
-                            System.out.println(e[5]);
+                        System.out.println("Descripcio: " + responseLogin.getCodiError());
+
+                        for (Residu e : responseLogin.getLlistat()) {
+                            residus.add(new Residu(e.getId_residu(), e.getNom_residu(), e.getImatge_residu(), e.getTipus_residu(), e.getDescripcio_residu(), e.getActiu_residu(), e.getValor_residu(), e.getNom_tipus_residu(), e.getImatge_tipus_residus()));
                         }
-*/
-                        System.out.println(responseLogin.getLlistaResidus());
+                        ;
                     }
-
-
+                    System.out.println(responseLogin.getLlistat());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                Toast.makeText(TipusResiduActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                System.out.println("Error: " + t.getMessage());
+
                 Toast.makeText(TipusResiduActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
             }
         });
 
-
+        super.onCreate(savedInstanceState);
         init();
     }
 
 
     public void init() {
-        elements = new ArrayList<>();
+        /*elements = new ArrayList<>();
         elements.add(new ListElement("Plastic", "reciclable al 100%", 345, 1));
         elements.add(new ListElement("Cartro", "reciclable al 23%", 234, 2));
         elements.add(new ListElement("Metall", "reciclable al 234%", 2345, 3));
         elements.add(new ListElement("Organic", "reciclable al 54%", 0545, 4));
 
-
-        ListAdapter listAdapter = new ListAdapter(elements, this);
+*/
+        ListAdapter listAdapter = new ListAdapter((ArrayList<Residu>) residus, this);
         RecyclerView recyclerView = findViewById(R.id.rVTipusResidu);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -101,6 +102,50 @@ public class TipusResiduActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Aqui es podria mostrar el missatge", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        setContentView(R.layout.activity_tipus_residu);
+        SharedPreferences sharedPreferencesAdmin = getSharedPreferences("Usuari_administrador", MODE_PRIVATE);
+        ApiService apiService = RetrofitClient.getApiService();
+        Call<ResponseLogin> call = apiService.llistatResidus(sharedPreferencesAdmin.getString("id_usuari", null), sharedPreferencesAdmin.getString("token", null), sharedPreferencesAdmin.getString("permis", null));
+
+        call.enqueue(new Callback<>() {
+
+            @Override
+            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                if (response.isSuccessful()) {
+                    ResponseLogin responseLogin = response.body();
+                    System.out.println(responseLogin.getCodiError());
+                    System.out.println(sharedPreferencesAdmin.getString("token", null));
+                    System.out.println(sharedPreferencesAdmin.getString("id", null));
+                    System.out.println(sharedPreferencesAdmin.getString("permis", null));
+
+                    if (responseLogin.getCodiError().equals("0")) {
+                        System.out.println("Descripcio: " + responseLogin.getCodiError());
+
+                        for (Residu e : responseLogin.getLlistat()) {
+                            residus.add(new Residu(e.getId_residu(), e.getNom_residu(), e.getImatge_residu(), e.getTipus_residu(), e.getDescripcio_residu(), e.getActiu_residu(), e.getValor_residu(), e.getNom_tipus_residu(), e.getImatge_tipus_residus()));
+                        }
+                        ;
+                    }
+                    System.out.println(responseLogin.getLlistat());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                Toast.makeText(TipusResiduActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                System.out.println("Error: " + t.getMessage());
+
+                Toast.makeText(TipusResiduActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        super.onResume();
+        init();
     }
 
     public void mostrarToastCardView(View view) {

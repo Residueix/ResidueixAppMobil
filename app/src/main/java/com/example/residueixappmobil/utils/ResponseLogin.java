@@ -1,6 +1,9 @@
 package com.example.residueixappmobil.utils;
 
+import com.example.residueixappmobil.model.Residu;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class ResponseLogin {
     @SerializedName("token")
@@ -31,25 +34,23 @@ public class ResponseLogin {
     private String error;
     @SerializedName("accio")
     private String accio;
-
-
-
     @SerializedName("descripcio")
     private String descripcio;
 
     @SerializedName("llistat")
-    private String LlistaResidus ;
-
+    private List<Residu> llistat ;
     @SerializedName("permis")
-    private String permis;
+    private int permis;
 
 
-    public String getPermis() {
+
+
+    public int getPermis() {
         return permis;
     }
 
-    public String getLlistaResidus() {
-        return LlistaResidus;
+    public List<Residu> getLlistat() {
+        return llistat;
     }
     public String getAccio() {
         return accio;

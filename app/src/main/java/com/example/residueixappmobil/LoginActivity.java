@@ -91,7 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("json", jsonUsuari);
                             editor.commit();
 
-                            if (tipus.equals("2")) {
+                            if (tipus.equals("3")) {
+
                                 Intent intent = new Intent(LoginActivity.this, PerfilResiduentActivity.class);
 
                                 startActivity(intent);

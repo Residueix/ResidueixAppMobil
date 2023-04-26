@@ -106,9 +106,9 @@ public class PPrincipalActivity extends AppCompatActivity {
      * En pitjar a l'imatge registre ens mostra RegistreActivity
      */
     public void registreButton(View view) {
-        /*Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
+        Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
         intentPantallaRegistre.setAction(Intent.ACTION_SEND);
-        startActivity(intentPantallaRegistre);*/
+        startActivity(intentPantallaRegistre);
         ApiService apiService = getApiService();
         Call<ResponseLogin> call = apiService.logout(String.valueOf(mUsuari.getId()), mUsuari.getToken());
         call.enqueue(new Callback<>() {
