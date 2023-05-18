@@ -22,6 +22,11 @@ public class Residu {
     @SerializedName("imatge_tipus_residu")
     String imatge_tipus_residus;
 
+    @SerializedName("id")
+    String id;
+    @SerializedName("nom")
+    String nom;
+
     public Residu(String id_residu, String nom_residu, String imatge_residu, String tipus_residu, String descripcio_residu, String actiu_residu, String valor_residu, String nom_tipus_residu, String imatge_tipus_residus) {
         this.id_residu = id_residu;
         this.nom_residu = nom_residu;
@@ -32,6 +37,19 @@ public class Residu {
         this.valor_residu = valor_residu;
         this.nom_tipus_residu = nom_tipus_residu;
         this.imatge_tipus_residus = imatge_tipus_residus;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Residu(String id, String nom) {
+        this.id = id;
+        this.nom = nom;
     }
 
     public String getId_residu() {

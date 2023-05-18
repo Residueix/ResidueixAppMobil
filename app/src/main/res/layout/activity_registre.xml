@@ -113,7 +113,6 @@
                     android:ems="15"
                     android:hint="@string/nom"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTCognom1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +127,6 @@
                     android:ems="15"
                     android:hint="@string/cognom_1"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTCognom2"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -143,7 +141,6 @@
                     android:ems="15"
                     android:hint="@string/cognom_2"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTCorreu"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +155,6 @@
                     android:ems="15"
                     android:hint="@string/correu_usuari"
                     android:inputType="textEmailAddress"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTMobil"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -173,7 +169,6 @@
                     android:ems="15"
                     android:hint="@string/mòbil"
                     android:inputType="phone"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTCarrer"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +182,6 @@
                     android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/Carrer"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTCodiPostal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -202,26 +196,25 @@
                     android:ems="15"
                     android:hint="@string/Codi_Postal"
                     android:inputType="number"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
-                    app:layout_constraintBottom_toTopOf="@+id/eTPoblacio"
+                    app:layout_constraintBottom_toTopOf="@+id/spinnerPoblacio"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTCarrer" />
 
-                <EditText
-                    android:id="@+id/eTPoblacio"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/spinnerPoblacio"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/Poblacio"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTContrasenya"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTCodiPostal" />
+
 
                 <EditText
                     android:id="@+id/eTContrasenya"
@@ -231,12 +224,11 @@
                     android:ems="15"
                     android:hint="@string/contrasenya_usuari"
                     android:inputType="textPassword"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toTopOf="@+id/eTRepetirContrasenya"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/eTPoblacio" />
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerPoblacio" />
 
                 <EditText
                     android:id="@+id/eTRepetirContrasenya"
@@ -246,12 +238,13 @@
                     android:ems="15"
                     android:hint="@string/repetiu_contrasenya"
                     android:inputType="textPassword"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTContrasenya" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -269,11 +262,10 @@
                     android:id="@+id/eTnom_Adherit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/Nom_Adherit"
                     android:inputType="textPersonName"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -283,16 +275,26 @@
                     android:id="@+id/etHorari"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="4dp"
                     android:ems="15"
                     android:hint="@string/Horari"
                     android:inputType="number"
-                    android:minHeight="48dp"
                     android:textColorHint="#B33366FF"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/eTnom_Adherit" />
+
+                <Spinner
+                    android:id="@+id/spinnerTipusAdherit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:ems="15"
+                    android:hint="@string/Poblacio"
+                    android:textColorHint="#B33366FF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etHorari" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -318,6 +320,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="32dp"
                 android:backgroundTint="@color/boto_acceptar"
+                android:onClick="resgistrar"
                 android:text="@string/Acceptar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

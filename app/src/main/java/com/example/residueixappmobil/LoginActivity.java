@@ -20,6 +20,7 @@ import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.RetrofitClient;
 import com.example.residueixappmobil.utils.ResponseLogin;
+import com.example.residueixappmobil.utils.xifratParaulaClau;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -45,19 +46,25 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                validarLogin();
+                try {
+                    validarLogin();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }
 
-    private void validarLogin() {
+    private void validarLogin() throws Exception {
         String tVusuari = tvUsuari.getText().toString();
         String tVpassword = tvPassword.getText().toString();
+
+
 
         if (!tVusuari.equals("") && !tVpassword.equals("")) {
 
             ApiService apiService = RetrofitClient.getApiService();
-            Call<ResponseLogin> call = apiService.login(tVusuari, tVpassword);
+            Call<ResponseLogin> call = apiService.login(tVusuari, xifratParaulaClau.encrypt(tVpassword));
             call.enqueue(new Callback<>() {
                 @Override
                 public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {

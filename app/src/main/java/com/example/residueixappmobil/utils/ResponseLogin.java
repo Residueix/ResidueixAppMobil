@@ -1,5 +1,6 @@
 package com.example.residueixappmobil.utils;
 
+import com.example.residueixappmobil.model.Desplegable;
 import com.example.residueixappmobil.model.Residu;
 import com.google.gson.annotations.SerializedName;
 
@@ -38,12 +39,34 @@ public class ResponseLogin {
     private String descripcio;
 
     @SerializedName("llistat")
-    private List<Residu> llistat ;
+    private List<Residu> llistat;
     @SerializedName("permis")
     private int permis;
 
+    @SerializedName("llistat_poblacio")
+    private List<Desplegable> llistatPoblacio;
+
+    @SerializedName("llistat_tipusAdherit")
+    private List<Desplegable> llistatTipusAdherit;
 
 
+    public List<Desplegable> getLlistatPoblacio() {
+        return llistatPoblacio;
+    }
+
+    public void setLlistatTipusAdherit(List<Desplegable> llistatTipusAdherit) {
+        this.llistatTipusAdherit = llistatTipusAdherit;
+    }
+
+    public void setLlistatPoblacio(List<Desplegable> llistatPoblacio) {
+        this.llistatPoblacio = llistatPoblacio;
+    }
+
+
+
+    public List<Desplegable> getLlistatTipusAdherit() {
+        return llistatTipusAdherit;
+    }
 
     public int getPermis() {
         return permis;
@@ -52,6 +75,7 @@ public class ResponseLogin {
     public List<Residu> getLlistat() {
         return llistat;
     }
+
     public String getAccio() {
         return accio;
     }
@@ -71,6 +95,7 @@ public class ResponseLogin {
     public String getTipusNom() {
         return tipusNom;
     }
+
     public String getEmail() {
         return email;
     }

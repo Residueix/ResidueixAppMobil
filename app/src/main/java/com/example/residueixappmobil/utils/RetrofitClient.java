@@ -23,8 +23,5 @@ public class RetrofitClient {
         }
         return retrofit.create(ApiService.class);
     }
-
-
-
 }
 

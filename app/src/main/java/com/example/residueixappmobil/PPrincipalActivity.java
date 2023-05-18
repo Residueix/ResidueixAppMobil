@@ -9,26 +9,19 @@ package com.example.residueixappmobil;
 import static com.example.residueixappmobil.utils.RetrofitClient.getApiService;
 
 
-import androidx.annotation.ColorInt;
-import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Spatializer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ResponseLogin;
 import com.example.residueixappmobil.utils.RetrofitClient;
 import com.google.gson.Gson;
-
-import java.sql.SQLOutput;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -26,12 +27,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private ArrayList<Residu> mData;
     private LayoutInflater mInflater;
     private Context context;
+    private List<Residu> fullList;
+
 
     public ListAdapter(ArrayList<Residu> itemList, Context context) {
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
         this.mData = itemList;
+        this.fullList = new ArrayList<>(itemList);
     }
+
 
     @Override
     public int getItemCount() {
@@ -45,12 +50,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return new ListAdapter.ViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(final ListAdapter.ViewHolder holder, final int position) {
         holder.bindData(mData.get(position));
 
-        holder.itemView.setOnClickListener(view -> Toast.makeText(context, "Card #" + position + " clicked", Toast.LENGTH_SHORT).show());
+        holder.itemView.setOnClickListener(view -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle(mData.get(position).getNom_tipus_residu());
+            builder.setMessage(mData.get(position).getDescripcio_residu());
+            builder.setPositiveButton("OK", null);
+            builder.show();
+        });
     }
+
 
     public void setItems(List<Residu> items) {
         mData = (ArrayList<Residu>) items;
@@ -74,7 +87,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
             Glide.with(context).load(imageURL).into(iconCardView);
             tVTitolResidu.setText(String.valueOf(item.getNom_tipus_residu()));
-            tVDescripcioResidu.setText(item.getDescripcio_residu()) ;
+            tVDescripcioResidu.setText(item.getNom_residu()) ;
         }
     }
 }
