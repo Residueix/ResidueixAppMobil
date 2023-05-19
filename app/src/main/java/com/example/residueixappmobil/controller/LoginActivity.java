@@ -1,4 +1,4 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 /**
  * Classe que conté totes les instruccions de la pantalla de Login.
  *
@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.RetrofitClient;

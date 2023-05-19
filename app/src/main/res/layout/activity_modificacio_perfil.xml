@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModificacioPerfilActivity">
+    tools:context=".controller.ModificacioPerfilActivity">
     <ImageView
         android:id="@+id/imatge_fons_pprincipal"
         android:layout_width="wrap_content"

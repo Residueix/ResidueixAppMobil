@@ -1,4 +1,4 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 /**
  * Classe que conté totes les instruccions de la pantalla Qui som.
  *
@@ -6,6 +6,8 @@ package com.example.residueixappmobil;
  */
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Usuari;
 import android.content.Intent;
 import android.os.Bundle;

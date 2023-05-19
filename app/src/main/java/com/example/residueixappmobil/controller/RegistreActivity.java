@@ -1,4 +1,4 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 
 /**
  * Classe que conté totes les instruccions de la pantalla Registre.
@@ -21,18 +21,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Poblacio;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ResponseAlta;
-import com.example.residueixappmobil.utils.ResponseLogin;
 import com.example.residueixappmobil.utils.ResponseTipusAdherit;
 import com.example.residueixappmobil.model.TipusAdherit;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ResponsePoblacio;
 import com.example.residueixappmobil.utils.RetrofitClient;
-import com.example.residueixappmobil.utils.xifratParaulaClau;
-import com.google.gson.Gson;
-import com.google.gson.internal.bind.util.ISO8601Utils;
 
 import java.util.ArrayList;
 import java.util.List;

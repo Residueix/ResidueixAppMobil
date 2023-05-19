@@ -1,4 +1,4 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 /**
  * Classe que conté totes les instruccions de la pantalla principal.
  * L'activitat principal és responsable de la gestió dels usuaris (login, logout i registre) i de l'interacció amb la interfície d'usuari.
@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ResponseLogin;

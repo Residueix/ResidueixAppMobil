@@ -1,7 +1,6 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,10 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Residu;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ListAdapter;
-import com.example.residueixappmobil.utils.ResponseLogin;
 import com.example.residueixappmobil.utils.ResponseResidus;
 import com.example.residueixappmobil.utils.RetrofitClient;
 

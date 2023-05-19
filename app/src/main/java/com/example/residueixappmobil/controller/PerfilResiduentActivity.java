@@ -1,4 +1,4 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Usuari;
 import com.google.gson.Gson;
 /**

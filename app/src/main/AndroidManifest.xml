@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".PPrincipalActivity"
+            android:name=".controller.PPrincipalActivity"
             android:exported="true"
             android:theme="@style/Theme.ResidueixAppMobil">
             <intent-filter>
@@ -24,31 +24,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name=".controller.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".RegistreActivity"
+            android:name=".controller.RegistreActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".QuiSomActivity"
+            android:name=".controller.QuiSomActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".ModificacioPerfilActivity"
+            android:name=".controller.ModificacioPerfilActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".PerfilResiduentActivity"
+            android:name=".controller.PerfilResiduentActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".TipusResiduActivity"
+            android:name=".controller.TipusResiduActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".PerfilAdheritActivity"
+            android:name=".controller.PerfilAdheritActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil"/>
     </application>

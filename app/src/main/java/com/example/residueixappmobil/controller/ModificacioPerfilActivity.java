@@ -1,8 +1,10 @@
-package com.example.residueixappmobil;
+package com.example.residueixappmobil.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.residueixappmobil.R;
 
 public class ModificacioPerfilActivity extends AppCompatActivity {
 
