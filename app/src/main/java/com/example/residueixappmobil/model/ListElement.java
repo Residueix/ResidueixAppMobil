@@ -1,5 +1,9 @@
 package com.example.residueixappmobil.model;
-
+/**
+ * Classe model ListElement que representa cada un dels elements d'un ReciclerView amb les seves caracteristiques individuals
+ *
+ * @author Albert Montes Miracle
+ */
 public class ListElement {
     String nom;
     String descripcio;

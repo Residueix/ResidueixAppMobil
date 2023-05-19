@@ -1,7 +1,11 @@
 package com.example.residueixappmobil.model;
 
 import com.google.gson.annotations.SerializedName;
-
+/**
+ * Classe model Poblacio que ens serveix per representar cada una de les poblacions que recuperem de l'API
+ *
+ * @author Albert Montes Miracle
+ */
 public class Poblacio {
 
     @SerializedName("id")

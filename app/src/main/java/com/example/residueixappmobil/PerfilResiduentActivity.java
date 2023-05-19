@@ -12,11 +12,21 @@ import android.widget.Toast;
 
 import com.example.residueixappmobil.model.Usuari;
 import com.google.gson.Gson;
-
+/**
+ * Aquesta classe representa l'activitat que mostra el perfil de l'usuari.
+ * Obté les dades de l'usuari i les mostra en la vista.
+ * @author Albert Montes Miracle
+ */
 public class PerfilResiduentActivity extends AppCompatActivity {
+    // Aquesta variable manté una instància de l'usuari actual.
+    Usuari mUsuari;
 
-     Usuari mUsuari;
-
+    /**
+     * Aquest mètode s'executa quan es crea l'activitat.
+     * Carrega les preferències de l'usuari, obté les dades de l'usuari i les mostra en la vista.
+     *
+     * @param savedInstanceState Conté l'estat de l'aplicació per a que pugui ser restaurada si es requereix.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +50,12 @@ public class PerfilResiduentActivity extends AppCompatActivity {
 
 
     }
+    /**
+     * Aquest mètode s'executa quan l'usuari prem el botó de tornar enrere.
+     * Finalitza aquesta activitat i torna a la vista anterior.
+     *
+     * @param view La vista on es va produir el clic.
+     */
     public void tornarEnrera(View view) {
         finish();
     }

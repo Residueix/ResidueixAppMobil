@@ -1,27 +1,29 @@
 package com.example.residueixappmobil;
 /**
  * Classe que conté totes les instruccions de la pantalla principal.
+ * L'activitat principal és responsable de la gestió dels usuaris (login, logout i registre) i de l'interacció amb la interfície d'usuari.
  *
  * @author Albert Montes Miracle
- * @version 23/03/2023
  */
 
 import static com.example.residueixappmobil.utils.RetrofitClient.getApiService;
 
 
-
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ResponseLogin;
 import com.example.residueixappmobil.utils.RetrofitClient;
 import com.google.gson.Gson;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,6 +32,12 @@ public class PPrincipalActivity extends AppCompatActivity {
     Usuari mUsuari;
     Button mButton;
 
+    /**
+     * Mètode onCreate que s'executa quan es crea l'activitat.
+     * Aquí es carreguen les preferències de l'usuari i es fa una crida a l'API per iniciar la sessió com a administrador.
+     *
+     * @param savedInstanceState Conté l'estat de l'aplicació per a que pugui ser restaurada si es requereix.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +74,10 @@ public class PPrincipalActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Aquest mètode es crida quan l'activitat torna a l'estat actiu.
+     * Aquí es carreguen de nou les preferències de l'usuari i es configura el botó de login.
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -86,7 +98,10 @@ public class PPrincipalActivity extends AppCompatActivity {
     }
 
     /**
-     * En pitjar a l'imatge login ens mostra LoginActivity
+     * En pitjar a l'imatge login ens mostra LoginActivity.
+     * Aquest mètode es crida quan l'usuari clica sobre el botó de login.
+     *
+     * @param view La vista on es va produir el clic.
      */
     public void loginButton(View view) {
         finish();
@@ -95,6 +110,12 @@ public class PPrincipalActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Aquest mètode es crida quan l'usuari clica sobre el botó de tancar sessió (logout).
+     * Aquest mètode fa una crida a l'API per tancar la sessió.
+     *
+     * @param view La vista on es va produir el clic.
+     */
     public void logout(View view) {
         ApiService apiService = getApiService();
         Call<ResponseLogin> call = apiService.logout(String.valueOf(mUsuari.getId()), mUsuari.getToken());
@@ -130,7 +151,9 @@ public class PPrincipalActivity extends AppCompatActivity {
     }
 
     /**
-     * En pitjar a l'imatge registre ens mostra RegistreActivity
+     * Aquest mètode es crida quan l'usuari clica sobre el botó de registre.
+     *
+     * @param view La vista on es va produir el clic.
      */
     public void registreButton(View view) {
         Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
@@ -141,7 +164,9 @@ public class PPrincipalActivity extends AppCompatActivity {
     }
 
     /**
-     * En pitjar a l'imatge QuiSom ens mostra QuiSomActivity
+     * Aquest mètode es crida quan l'usuari clica sobre el botó de QuiSom.
+     *
+     * @param view La vista on es va produir el clic.
      */
     public void quiSomButton(View view) {
         Intent intentPantallaQuiSom = new Intent(this, QuiSomActivity.class);
@@ -149,11 +174,11 @@ public class PPrincipalActivity extends AppCompatActivity {
         startActivity(intentPantallaQuiSom);
     }
 
-    public void residusButton(View view) {
-        Intent intentPantallaResidus = new Intent(this, ResidusActivity.class);
-        intentPantallaResidus.setAction(Intent.ACTION_SEND);
-        startActivity(intentPantallaResidus);
-    }
+    /**
+     * Aquest mètode es crida quan l'usuari clica sobre el botó de Residus.
+     *
+     * @param view La vista on es va produir el clic.
+     */
 
     public void tipusResidusButton(View view) {
         Intent intentPantallaTipusResidus = new Intent(this, TipusResiduActivity.class);
@@ -161,6 +186,10 @@ public class PPrincipalActivity extends AppCompatActivity {
         startActivity(intentPantallaTipusResidus);
     }
 
+    /**
+     * Aquest mètode es crida quan l'activitat està a punt de ser aturada.
+     * Aquí es netegen les preferències de l'usuari.
+     */
     @Override
     protected void onStop() {
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
@@ -174,6 +203,10 @@ public class PPrincipalActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Aquest mètode es crida quan l'activitat està a punt de ser destruïda.
+     * Aquí es netegen les preferències de l'usuari i es tanca la sessió d'administrador i l'actualment loginejat.
+     */
     @Override
     protected void onDestroy() {
 

@@ -2,6 +2,11 @@ package com.example.residueixappmobil.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Classe model Residu que ens serveix per representar cada un dels residus que recuperem de l'API
+ *
+ * @author Albert Montes Miracle
+ */
 public class Residu {
     @SerializedName("id_residu")
     String id_residu;
@@ -22,10 +27,6 @@ public class Residu {
     @SerializedName("imatge_tipus_residu")
     String imatge_tipus_residus;
 
-    @SerializedName("id")
-    String id;
-    @SerializedName("nom")
-    String nom;
 
     public Residu(String id_residu, String nom_residu, String imatge_residu, String tipus_residu, String descripcio_residu, String actiu_residu, String valor_residu, String nom_tipus_residu, String imatge_tipus_residus) {
         this.id_residu = id_residu;
@@ -39,18 +40,6 @@ public class Residu {
         this.imatge_tipus_residus = imatge_tipus_residus;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public Residu(String id, String nom) {
-        this.id = id;
-        this.nom = nom;
-    }
 
     public String getId_residu() {
         return id_residu;

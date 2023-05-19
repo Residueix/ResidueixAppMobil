@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Classe Usuari que conté totes les carcterístiques de l'usuari loginat.
  *
  * @author Daniel Garcia Ruiz
- * @version 12/03/2023
  */
 public class Usuari implements Serializable {
 

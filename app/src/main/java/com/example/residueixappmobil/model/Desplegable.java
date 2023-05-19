@@ -2,6 +2,12 @@ package com.example.residueixappmobil.model;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Classe model Desplegable que conté totes les carcterístiques dels desplegables que necessitarem a l'app.
+ *
+ * @author Albert Montes Miracle
+ */
+
 public class Desplegable {
     @SerializedName("id")
     int id;
@@ -12,18 +18,10 @@ public class Desplegable {
     public int getId() {
         return id;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
 
     public Desplegable(int id, String nom) {
         this.id = id;

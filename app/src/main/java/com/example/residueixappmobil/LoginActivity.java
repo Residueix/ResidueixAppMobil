@@ -2,8 +2,14 @@ package com.example.residueixappmobil;
 /**
  * Classe que conté totes les instruccions de la pantalla de Login.
  *
+ * Aquesta classe permet als usuaris iniciar sessió a l'aplicació i validar les seves credencials.
+ * Es comunica amb un servei API per realitzar l'autenticació i obtenir les dades de l'usuari.
+ * Si l'autenticació és vàlida, l'usuari és redirigit a la pantalla de perfil corresponent al seu tipus.
+ * Si l'autenticació no és vàlida, es mostra un missatge d'error.
+ *
+ * Utilitza Retrofit per realitzar les crides a l'API i Gson per convertir les respostes en objectes Java.
+ *
  * @author Albert Montes Miracle
- * @version 23/03/2023
  */
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +41,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private Usuari mUsuari;
 
-
+    /**
+     * Mètode que s'executa en crear l'activitat.
+     * Inicialitza els components de la interfície gràfica i configura el listener del botó d'inici de sessió.
+     *
+     * @param savedInstanceState L'estat anterior de l'activitat, si n'hi ha.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +65,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
+    /**
+     * Mètode per validar l'inici de sessió de l'usuari.
+     * Comprova si el nom d'usuari i la contrasenya introduïts són vàlids.
+     * En cas afirmatiu, es fa una crida a l'API per autenticar l'usuari i obtenir les seves dades.
+     * Si l'autenticació és vàlida, es guarda la informació de l'usuari a SharedPreferences i es redirigeix a la pantalla de perfil adequada.
+     * Si l'autenticació no és vàlida, es mostra un missatge d'error.
+     *
+     * @throws Exception Si hi ha algun error durant el procés d'autenticació.
+     */
     private void validarLogin() throws Exception {
         String tVusuari = tvUsuari.getText().toString();
         String tVpassword = tvPassword.getText().toString();
@@ -128,10 +147,10 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public void tornarEnrera(View view) {
-        Intent intent = new Intent(LoginActivity.this, PPrincipalActivity.class);
-        startActivity(intent);
 
+    // Mètode per tornar enrere
+    public void tornarEnrera(View view) {
+        finish();
     }
 }
 

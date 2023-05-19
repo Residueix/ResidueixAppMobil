@@ -36,10 +36,6 @@
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />
         <activity
-            android:name=".ResidusActivity"
-            android:exported="false"
-            android:theme="@style/Theme.ResidueixAppMobil" />
-        <activity
             android:name=".ModificacioPerfilActivity"
             android:exported="false"
             android:theme="@style/Theme.ResidueixAppMobil" />

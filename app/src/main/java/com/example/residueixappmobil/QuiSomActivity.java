@@ -3,7 +3,6 @@ package com.example.residueixappmobil;
  * Classe que conté totes les instruccions de la pantalla Qui som.
  *
  * @author Albert Montes Miracle
- * @version 23/03/2023
  */
 
 import androidx.appcompat.app.AppCompatActivity;
