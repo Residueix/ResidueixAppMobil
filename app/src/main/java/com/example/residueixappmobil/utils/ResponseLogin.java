@@ -42,8 +42,6 @@ public class ResponseLogin {
     @SerializedName("descripcio")
     private String descripcio;
 
-    @SerializedName("llistat")
-    private List<Residu> llistat;
     @SerializedName("permis")
     private int permis;
 
@@ -76,9 +74,7 @@ public class ResponseLogin {
         return permis;
     }
 
-    public List<Residu> getLlistat() {
-        return llistat;
-    }
+
 
     public String getAccio() {
         return accio;

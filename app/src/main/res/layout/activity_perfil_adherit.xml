@@ -44,6 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutContrasenya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -115,14 +116,15 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Saldo:"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTelefon"
-            tools:text="Actiu:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTelefon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutBotonsAboutUs"
         android:layout_width="match_parent"
@@ -131,8 +133,7 @@
         android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <Button
@@ -150,4 +151,38 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canviar contrasenya"
+        android:onClick="canviContrasenya"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutBotonsAboutUs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutContrasenya" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="ESTABLIMENT ADHERIT"
+        android:textAlignment="center"
+        android:textColor="@color/blau_menu"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutContrasenya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cLCapsalera" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.70"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Donar-me de baixa"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutContrasenya"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

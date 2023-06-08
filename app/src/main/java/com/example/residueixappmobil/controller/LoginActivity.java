@@ -42,12 +42,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private Usuari mUsuari;
 
-    /**
-     * Mètode que s'executa en crear l'activitat.
-     * Inicialitza els components de la interfície gràfica i configura el listener del botó d'inici de sessió.
-     *
-     * @param savedInstanceState L'estat anterior de l'activitat, si n'hi ha.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,20 +60,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    /**
-     * Mètode per validar l'inici de sessió de l'usuari.
-     * Comprova si el nom d'usuari i la contrasenya introduïts són vàlids.
-     * En cas afirmatiu, es fa una crida a l'API per autenticar l'usuari i obtenir les seves dades.
-     * Si l'autenticació és vàlida, es guarda la informació de l'usuari a SharedPreferences i es redirigeix a la pantalla de perfil adequada.
-     * Si l'autenticació no és vàlida, es mostra un missatge d'error.
-     *
-     * @throws Exception Si hi ha algun error durant el procés d'autenticació.
-     */
+
     private void validarLogin() throws Exception {
         String tVusuari = tvUsuari.getText().toString();
         String tVpassword = tvPassword.getText().toString();
-
-
 
         if (!tVusuari.equals("") && !tVpassword.equals("")) {
 
@@ -91,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         ResponseLogin responseLogin = response.body();
                         String error;
-                        if (responseLogin.getCodiError().equals("0")) {
+                        if (responseLogin != null && responseLogin.getCodiError().equals("0")) {
 
                             mUsuari = new Usuari();
                             mUsuari.setId(Integer.parseInt(responseLogin.getId()));
@@ -103,36 +87,25 @@ public class LoginActivity extends AppCompatActivity {
                             mUsuari.setCognom2(responseLogin.getCognom2());
                             mUsuari.setToken(responseLogin.getToken());
 
-                            String tipus = responseLogin.getTipus();
-                            String actiu = responseLogin.getActiu();
-                            error = responseLogin.getError();
-                            String cError = responseLogin.getCodiError();
-                            String id = responseLogin.getId();
-                            //Toast.makeText(LoginActivity.this, "Codi error : " + cError + "Tipus: " + tipus,
-                            //      Toast.LENGTH_SHORT).show();
-
 
                             SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             String jsonUsuari = new Gson().toJson(mUsuari);
                             editor.putString("json", jsonUsuari);
-                            editor.commit();
+                            editor.apply();
+
+                            String tipus = responseLogin.getTipus();
 
                             if (tipus.equals("3")) {
-
                                 Intent intent = new Intent(LoginActivity.this, PerfilResiduentActivity.class);
-
                                 startActivity(intent);
-
                             } else if (tipus.equals("4")) {
-                                Toast.makeText(LoginActivity.this, "Es tipus:" + tipus, Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(LoginActivity.this, PerfilAdheritActivity.class);
                                 startActivity(intent);
                             }
 
-
                         } else {
-                            error = responseLogin.getError();
+                            error = responseLogin != null ? responseLogin.getError() : "Error desconocido";
                             Toast.makeText(LoginActivity.this, "Error: " + error , Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -148,8 +121,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
-    // Mètode per tornar enrere
     public void tornarEnrera(View view) {
         finish();
     }

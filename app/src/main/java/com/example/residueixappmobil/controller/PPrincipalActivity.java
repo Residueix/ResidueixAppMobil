@@ -41,15 +41,23 @@ public class PPrincipalActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pprincipal);
-
+        updateUiWithUserPreferences();
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
         String jsonUsuari = sharedPreferences.getString("json", null);
         if (jsonUsuari != null) {
             mUsuari = new Gson().fromJson(jsonUsuari, Usuari.class);
         }
+        mButton = findViewById(R.id.login_button);
+        if (mUsuari != null && !mUsuari.getNom().isEmpty()) {
 
+            mButton.setText(mUsuari.getNom());
+            // Cambia el aspecto del botón como desees
+            mButton.setBackgroundColor(getResources().getColor(R.color.blau_menu));
+
+        }
         ApiService apiService = RetrofitClient.getApiService();
         Call<ResponseLogin> call = apiService.login("administrador@residueix.com", "administrador");
         call.enqueue(new Callback<>() {
@@ -82,14 +90,15 @@ public class PPrincipalActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        updateUiWithUserPreferences();
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
         String jsonUsuari = sharedPreferences.getString("json", null);
+
         if (jsonUsuari != null) {
             mUsuari = new Gson().fromJson(jsonUsuari, Usuari.class);
         }
         mButton = findViewById(R.id.login_button);
         if (mUsuari != null && !mUsuari.getNom().isEmpty()) {
-            Toast.makeText(this, "Nom: " + mUsuari.getNom(), Toast.LENGTH_SHORT).show();
 
             mButton.setText(mUsuari.getNom());
             // Cambia el aspecto del botón como desees
@@ -99,16 +108,35 @@ public class PPrincipalActivity extends AppCompatActivity {
     }
 
     /**
-     * En pitjar a l'imatge login ens mostra LoginActivity.
      * Aquest mètode es crida quan l'usuari clica sobre el botó de login.
      *
      * @param view La vista on es va produir el clic.
      */
     public void loginButton(View view) {
-        finish();
-        Intent intentPantallaLogin = new Intent(this, LoginActivity.class);
-        startActivity(intentPantallaLogin);
+        if (mUsuari != null && !mUsuari.getNom().isEmpty()) {
 
+            if (mUsuari.getTipus() == 3) {
+                Toast.makeText(this, "Usuari" + mUsuari.getNom(), Toast.LENGTH_SHORT).show();
+                SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
+                String jsonUsuari = sharedPreferences.getString("json", null);
+                if (jsonUsuari != null) {
+                    mUsuari = new Gson().fromJson(jsonUsuari, Usuari.class);
+                }
+                Intent intentPantallaResiduent = new Intent(this, PerfilResiduentActivity.class);
+                startActivity(intentPantallaResiduent);
+            } else {
+                SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
+                String jsonUsuari = sharedPreferences.getString("json", null);
+                if (jsonUsuari != null) {
+                    mUsuari = new Gson().fromJson(jsonUsuari, Usuari.class);
+                }
+                Intent intentPantallaAdherit = new Intent(this, PerfilAdheritActivity.class);
+                startActivity(intentPantallaAdherit);
+            }
+        } else {
+            Intent intentPantallaLogin = new Intent(this, LoginActivity.class);
+            startActivity(intentPantallaLogin);
+        }
     }
 
     /**
@@ -118,38 +146,41 @@ public class PPrincipalActivity extends AppCompatActivity {
      * @param view La vista on es va produir el clic.
      */
     public void logout(View view) {
-        ApiService apiService = getApiService();
-        Call<ResponseLogin> call = apiService.logout(String.valueOf(mUsuari.getId()), mUsuari.getToken());
-        call.enqueue(new Callback<>() {
-            @Override
-            public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                if (response.isSuccessful()) {
-                    ResponseLogin responseLogin = response.body();
-                    if (responseLogin.getCodiError().equalsIgnoreCase("0")) {
-                        SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("json", null);
-                        editor.clear();
-                        editor.apply();
-                        editor.commit();
-                        mButton.setText("Login");
-                        mButton.setBackgroundColor(getResources().getColor(R.color.blau_menu));
-
-                    } else {
-                        Toast.makeText(PPrincipalActivity.this, "Token usuari:" + mUsuari.getToken(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(PPrincipalActivity.this, "Error" + responseLogin.getCodiError(), Toast.LENGTH_SHORT).show();
-
+        // Asegúrate de que mUsuari no sea null antes de intentar llamar a la API
+        if (mUsuari != null) {
+            ApiService apiService = getApiService();
+            Call<ResponseLogin> call = apiService.logout(String.valueOf(mUsuari.getId()), mUsuari.getToken());
+            call.enqueue(new Callback<>() {
+                @Override
+                public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
+                    if (response.isSuccessful()) {
+                        ResponseLogin responseLogin = response.body();
+                        if (responseLogin.getCodiError().equalsIgnoreCase("0")) {
+                            SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.clear();
+                            editor.apply();
+                            mUsuari = null; // Añade esta línea para asegurarte de que mUsuari es null
+                            mButton.setText("Login");
+                            mButton.setBackgroundColor(getResources().getColor(R.color.blau_menu));
+                        } else {
+                            Toast.makeText(PPrincipalActivity.this, "Token usuari:" + mUsuari.getToken(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PPrincipalActivity.this, "Error" + responseLogin.getCodiError(), Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<ResponseLogin> call, Throwable t) {
-                Toast.makeText(PPrincipalActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+                @Override
+                public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                    Toast.makeText(PPrincipalActivity.this, "Error de red", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(PPrincipalActivity.this, "No hay usuario logeado", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
 
     /**
      * Aquest mètode es crida quan l'usuari clica sobre el botó de registre.
@@ -157,7 +188,7 @@ public class PPrincipalActivity extends AppCompatActivity {
      * @param view La vista on es va produir el clic.
      */
     public void registreButton(View view) {
-        Intent intentPantallaRegistre = new Intent(this, RegistreActivity.class);
+        Intent intentPantallaRegistre = new Intent(this, AcceptarCondicionsActivity.class);
         intentPantallaRegistre.setAction(Intent.ACTION_SEND);
         startActivity(intentPantallaRegistre);
 
@@ -187,12 +218,37 @@ public class PPrincipalActivity extends AppCompatActivity {
         startActivity(intentPantallaTipusResidus);
     }
 
+    public void puntsRecollidaButton(View view) {
+        Intent intentPantallaPuntsRecollida = new Intent(this, PuntsRecollidaActivity.class);
+        intentPantallaPuntsRecollida.setAction(Intent.ACTION_SEND);
+        startActivity(intentPantallaPuntsRecollida);
+    }
+
+    public void establimentsAdheritsButton(View view) {
+        Intent intentPantallaEstablimentsAdherits = new Intent(this, EstablimentsAdheritsActivity.class);
+        intentPantallaEstablimentsAdherits.setAction(Intent.ACTION_SEND);
+        startActivity(intentPantallaEstablimentsAdherits);
+    }
+    private void updateUiWithUserPreferences() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
+        String jsonUsuari = sharedPreferences.getString("json", null);
+        if (jsonUsuari != null) {
+            mUsuari = new Gson().fromJson(jsonUsuari, Usuari.class);
+        }
+        mButton = findViewById(R.id.login_button);
+        if (mUsuari != null && !mUsuari.getNom().isEmpty()) {
+            mButton.setText(mUsuari.getNom());
+            mButton.setBackgroundColor(getResources().getColor(R.color.blau_menu));
+        }
+    }
+
+
     /**
      * Aquest mètode es crida quan l'activitat està a punt de ser aturada.
      * Aquí es netegen les preferències de l'usuari.
      */
-    @Override
-    protected void onStop() {
+   /*    @Override
+ protected void onStop() {
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("json", null);
@@ -203,13 +259,13 @@ public class PPrincipalActivity extends AppCompatActivity {
         super.onStop();
 
     }
-
+*/
     /**
      * Aquest mètode es crida quan l'activitat està a punt de ser destruïda.
      * Aquí es netegen les preferències de l'usuari i es tanca la sessió d'administrador i l'actualment loginejat.
      */
-    @Override
-    protected void onDestroy() {
+    /* @Override
+   protected void onDestroy() {
 
         SharedPreferences sharedPreferences = getSharedPreferences("Usuari_persistent", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -235,6 +291,6 @@ public class PPrincipalActivity extends AppCompatActivity {
             }
         });
         super.onDestroy();
-    }
+    }*/
 }
 

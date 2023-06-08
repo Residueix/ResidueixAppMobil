@@ -11,6 +11,7 @@ package com.example.residueixappmobil.controller;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -25,11 +26,13 @@ import com.example.residueixappmobil.R;
 import com.example.residueixappmobil.model.Poblacio;
 import com.example.residueixappmobil.model.Usuari;
 import com.example.residueixappmobil.utils.ResponseAlta;
+import com.example.residueixappmobil.utils.ResponseLogin;
 import com.example.residueixappmobil.utils.ResponseTipusAdherit;
 import com.example.residueixappmobil.model.TipusAdherit;
 import com.example.residueixappmobil.utils.ApiService;
 import com.example.residueixappmobil.utils.ResponsePoblacio;
 import com.example.residueixappmobil.utils.RetrofitClient;
+import com.example.residueixappmobil.utils.xifratParaulaClau;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -180,11 +183,13 @@ public class RegistreActivity extends AppCompatActivity {
 
     // Mètode per tornar enrere
     public void tornarEnrera(View view) {
-        finish();
+        Intent intentPPrincipal = new Intent(this, PPrincipalActivity.class);
+        startActivity(intentPPrincipal);
+        finish(); // opcional, si quieres que el botón atrás del dispositivo no regrese a la pantalla de perfil.
     }
 
     // Mètode per gestionar el registre
-    public void resgistrar(View view) {
+    public void resgistrar(View view) throws Exception {
         SharedPreferences sharedPreferencesAdmin = getSharedPreferences("Usuari_administrador", MODE_PRIVATE);
 
         int tipus;
@@ -197,16 +202,20 @@ public class RegistreActivity extends AppCompatActivity {
                                 if (!eTCarrer.getText().equals("")) {
                                     if (eTCodiPostal.getText().length() == 5) {
                                         ApiService apiService = RetrofitClient.getApiService();
-                                        Call<ResponseAlta> call = apiService.crearUsuariResiduent(sharedPreferencesAdmin.getString("id_usuari", null), sharedPreferencesAdmin.getString("token", null), "3", eTnom.getText().toString(), eTcognom.getText().toString(), eTcognom2.getText().toString(), "3", eTCorreu.getText().toString(), eTContrasenya.getText().toString(), eTMobil.getText().toString(), "1", eTCarrer.getText().toString(), "1", "11111");
+                                        Call<ResponseAlta> call = apiService.crearUsuariResiduent(sharedPreferencesAdmin.getString("id_usuari", null), sharedPreferencesAdmin.getString("token", null), sharedPreferencesAdmin.getString("permis", null), eTnom.getText().toString(), eTcognom.getText().toString(), eTcognom2.getText().toString(), "3", eTCorreu.getText().toString(), xifratParaulaClau.encrypt(eTContrasenya.getText().toString()), eTMobil.getText().toString(), "1", eTCarrer.getText().toString(), "1", eTCodiPostal.getText().toString());
                                         call.enqueue(new Callback<>() {
-
                                             @Override
                                             public void onResponse(Call<ResponseAlta> call, Response<ResponseAlta> response) {
-                                                Toast.makeText(RegistreActivity.this, "usuari creat correctament", Toast.LENGTH_SHORT).show();
+                                                if (response.isSuccessful()) {
+                                                    ResponseAlta responseAlta = response.body();
+                                                    String error;
+                                                    Toast.makeText(RegistreActivity.this, "usuari creat correctament", Toast.LENGTH_SHORT).show();
 
-
+                                                    // Nueva actividad
+                                                    Intent intent = new Intent(RegistreActivity.this, PPrincipalActivity.class);
+                                                    startActivity(intent);
+                                                }
                                             }
-
                                             @Override
                                             public void onFailure(Call<ResponseAlta> call, Throwable t) {
                                                 Toast.makeText(RegistreActivity.this, "Error de red", Toast.LENGTH_SHORT).show();

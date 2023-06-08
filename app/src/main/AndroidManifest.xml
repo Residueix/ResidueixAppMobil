@@ -50,7 +50,23 @@
         <activity
             android:name=".controller.PerfilAdheritActivity"
             android:exported="false"
-            android:theme="@style/Theme.ResidueixAppMobil"/>
+            android:theme="@style/Theme.ResidueixAppMobil" />
+        <activity
+            android:name=".controller.PuntsRecollidaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil" />
+        <activity
+            android:name=".controller.AcceptarCondicionsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil" />
+        <activity
+            android:name=".controller.EstablimentsAdheritsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil" />
+        <activity
+            android:name=".controller.CanviContrasenyaActivity"
+            android:exported="false"
+            android:theme="@style/Theme.ResidueixAppMobil" />
     </application>
 
 </manifest>

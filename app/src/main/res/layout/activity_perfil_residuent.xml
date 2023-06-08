@@ -44,6 +44,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutContrasenya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
@@ -55,6 +56,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/cLCapsalera">
 
+        <TextView
+            android:id="@+id/textViewTipus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="21dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Tipus:"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewNom"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/textViewNom"
@@ -63,11 +77,11 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Nom:"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/textViewCognoms"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Nom:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTipus" />
 
         <TextView
             android:id="@+id/textViewCognoms"
@@ -76,11 +90,11 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Cognoms:"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/textViewCorreu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewNom"
-            android:text="Cognoms:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewNom" />
 
         <TextView
             android:id="@+id/textViewCorreu"
@@ -89,11 +103,11 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Correu:"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/textViewTelefon"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCognoms"
-            android:text="Correu:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCognoms" />
 
         <TextView
             android:id="@+id/textViewTelefon"
@@ -102,11 +116,11 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Telefon:"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@id/textViewActiu"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewCorreu"
-            android:text="Telefon:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewCorreu" />
 
         <TextView
             android:id="@+id/textViewActiu"
@@ -115,14 +129,15 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:text="Saldo:"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTelefon"
-            android:text="Actiu:" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewTelefon" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayoutBotonsAboutUs"
         android:layout_width="match_parent"
@@ -131,8 +146,7 @@
         android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
 
         <Button
@@ -144,10 +158,47 @@
             android:backgroundTint="@color/groc_menu"
             android:onClick="tornarEnrera"
             android:text="@string/boto_enrere"
+            android:textColor="#000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Canviar contrasenya"
+        android:onClick="canviContrasenya"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutBotonsAboutUs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayoutContrasenya" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="RESIDUENT"
+        android:textAlignment="center"
+        android:textColor="@color/blau_menu"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutContrasenya"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cLCapsalera" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0.70"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:onClick="baixaUsuari"
+        android:text="Donar-me de baixa"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayoutContrasenya"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

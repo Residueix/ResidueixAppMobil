@@ -1,27 +1,27 @@
 package com.example.residueixappmobil.controller;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+        import androidx.appcompat.app.AppCompatActivity;
+        import androidx.recyclerview.widget.LinearLayoutManager;
+        import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
+        import android.content.SharedPreferences;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Toast;
 
-import com.example.residueixappmobil.R;
-import com.example.residueixappmobil.model.Residu;
-import com.example.residueixappmobil.utils.ApiService;
-import com.example.residueixappmobil.utils.ListAdapter;
-import com.example.residueixappmobil.utils.ResponseResidus;
-import com.example.residueixappmobil.utils.RetrofitClient;
+        import com.example.residueixappmobil.R;
+        import com.example.residueixappmobil.model.Residu;
+        import com.example.residueixappmobil.utils.ApiService;
+        import com.example.residueixappmobil.utils.ListAdapter;
+        import com.example.residueixappmobil.utils.ResponseResidus;
+        import com.example.residueixappmobil.utils.RetrofitClient;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+        import retrofit2.Call;
+        import retrofit2.Callback;
+        import retrofit2.Response;
 /**
  * Classe que conté totes les instruccions de la pantalla de Tipus de Residu.
  *

@@ -1,19 +1,10 @@
 package com.example.residueixappmobil.utils;
 
 import com.google.gson.annotations.SerializedName;
-/**
- * Aquesta classe representa la resposta del servidor a una crida d'alta.
- * Conté les dades retornades pel servidor després de realitzar l'acció d'alta.
- * @author Albert Montes Miracle
- */
-public class ResponseAlta {
 
+public class ResponseBaixa {
     @SerializedName("codi_error")
     private String codiError;
-
-    @SerializedName("error")
-    private String error;
-
     @SerializedName("accio")
     private String accio;
 
@@ -31,13 +22,6 @@ public class ResponseAlta {
         this.codiError = codiError;
     }
 
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
 
     public String getAccio() {
         return accio;

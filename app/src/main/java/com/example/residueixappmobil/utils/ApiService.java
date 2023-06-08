@@ -1,6 +1,7 @@
 package com.example.residueixappmobil.utils;
 
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
@@ -95,6 +96,45 @@ public interface ApiService {
                                             @Field("password") String password, @Field("telefon") String telefon,
                                             @Field("actiu") String actiu, @Field("carrer") String carrer,
                                             @Field("poblacio") String poblacio, @Field("cp") String cp);
+
+    @FormUrlEncoded
+    @POST("puntsrecollida/llistat/index.php")
+    Call<ResponsePuntRecollida> llistatPuntsRecollida(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("puntsrecollida/llistat/index.php")
+    Call<ResponseEstablimentAdherit> llistatEstablimentsAdherits(@Field("token") String token);
+
+    @FormUrlEncoded
+    @POST("usuaris/baixa/index.php")
+    Call<ResponseBaixa> baixaUsuari(@Field("token") String token, @Field("id_usuari") String id_usuari, @Field("id") String id, @Field("permis") String permis);
+
+    @FormUrlEncoded
+    @POST("usuaris/consulta/index.php")
+    Call<ResponseConsultaUsuari> consultaUsuari(@Field("token") String token, @Field("id_usuari") String id_usuari, @Field("id") String id, @Field("permis") String permis);
+
+@FormUrlEncoded
+    @POST("usuaris/modificacio/residuent/index.php")
+    Call<ResponseConsultaUsuari> modificarUsuariResiduent(@Field("id_usuari") String idUsuari,@Field("id") String id, @Field("token") String token,
+                                                          @Field("permis") String permis, @Field("nom") String nom,
+                                                          @Field("cognom1") String cognom1, @Field("cognom2") String cognom2,
+                                                          @Field("tipus") String tipus, @Field("email") String email,
+                                                          @Field("password") String password, @Field("telefon") String telefon,
+                                                          @Field("actiu") String actiu, @Field("carrer") String carrer,
+                                                          @Field("poblacio") String poblacio, @Field("cp") String cp);
+@FormUrlEncoded
+    @POST("usuaris/modificacio/adherit/index.php")
+    Call<ResponseConsultaUsuari> modificarUsuariAdherit(@Field("id_usuari") String idUsuari,@Field("id") String id,
+                                                        @Field("token") String token, @Field("permis") String permis,
+                                                        @Field("nom") String nom,@Field("cognom1") String cognom1,
+                                                        @Field("cognom2") String cognom2,
+                                                        @Field("tipus") String tipus, @Field("email") String email,
+                                                        @Field("password") String password, @Field("telefon") String telefon,
+                                                        @Field("actiu") String actiu,@Field("nom_adherit") String nomAdherit,
+                                                        @Field("tipus_adherit") String tipusAdherit,
+                                                        @Field("horari") String horari, @Field("carrer") String carrer,
+                                                        @Field("poblacio") String poblacio, @Field("cp") String cp);
+
 }
 
 
